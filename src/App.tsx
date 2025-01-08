@@ -75,7 +75,7 @@ function App() {
   return (
     <div data-theme={theme} className="p-4">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-xl font-bold">AI Design Generator</h1>
+        <h1 className="text-xl font-bold">Penpot AI Designer</h1>
         <button
           onClick={() => setShowSettings(true)}
           className="px-3 py-1 text-sm border rounded hover:bg-gray-100"
