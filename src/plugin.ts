@@ -1,6 +1,15 @@
 import type { PluginMessageEvent } from './model';
+import type { Penpot } from './types';
 
-penpot.ui.open('React example plugin', `?theme=${penpot.theme}`);
+declare global {
+  interface Window {
+    penpot: Penpot;
+  }
+}
+
+const penpot = window.penpot;
+
+penpot.ui.open('AI Design Generator', `?theme=${penpot.theme}`);
 
 penpot.on('themechange', (theme) => {
   sendMessage({ type: 'theme', content: theme });
@@ -9,3 +18,5 @@ penpot.on('themechange', (theme) => {
 function sendMessage(message: PluginMessageEvent) {
   penpot.ui.sendMessage(message);
 }
+
+export {};
