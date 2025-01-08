@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { DesignParams } from './types';
-import { generateLayoutElements, ColorPalette } from './layoutGenerator';
+import { generateLayoutElements } from './layoutGenerator';
 import { Settings } from './components/Settings';
 import { aiService } from './services/ai';
 
@@ -44,7 +44,7 @@ function App() {
       });
 
       // Create a new page in Penpot
-      const page = await penpot.pages.create({
+      const _page = await penpot.pages.create({
         name: `AI Generated ${designParams.type}`
       });
 
