@@ -1,18 +1,21 @@
-import type { PluginMessageEvent } from './model';
-import type { Penpot } from './types';
-
-declare global {
-  interface Window {
-    penpot: Penpot;
-  }
-}
+import type { PluginMessageEvent } from './types';
 
 const penpot = window.penpot;
 
-penpot.ui.open('AI Design Generator', `?theme=${penpot.theme}`);
+// Initialize plugin UI
+penpot.ui.open('Penpot AI Designer', `?theme=${penpot.theme}`);
 
+// Handle theme changes
 penpot.on('themechange', (theme) => {
   sendMessage({ type: 'theme', content: theme });
+});
+
+// Handle messages from UI
+penpot.on('message', (message) => {
+  if (message.type === 'ready') {
+    // UI is ready to receive messages
+    console.log('Plugin UI ready');
+  }
 });
 
 function sendMessage(message: PluginMessageEvent) {
